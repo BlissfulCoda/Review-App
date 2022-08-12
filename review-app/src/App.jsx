@@ -1,7 +1,8 @@
+import Header from "./Components/Header";
 export default function App() {
   return (
     <div>
-      <h1>Helloooo</h1>
+      <Header title="Review App" />
     </div>
   );
 }
