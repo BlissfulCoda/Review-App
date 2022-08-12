@@ -1,14 +1,19 @@
 import PropTypes from "prop-types";
 import FeedbackItem from "./FeedbackItems";
 
-export default function FeedbackList({ feedbackData }) {
+export default function FeedbackList({ feedbackData, handleDelete }) {
   if (!feedbackData || feedbackData.length === 0) {
     return <p>loading data...</p>;
   }
+
   return (
     <div>
       {feedbackData.map((feedback) => (
-        <FeedbackItem key={feedback.id} data={feedback} />
+        <FeedbackItem
+          key={feedback.id}
+          data={feedback}
+          handleDelete={handleDelete}
+        />
       ))}
     </div>
   );
