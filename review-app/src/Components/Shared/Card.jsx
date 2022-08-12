@@ -7,6 +7,7 @@ export default function Card({ children, reverse }) {
   return (
     <div className="card" style={cardStyles} >
       {children}
+      
     </div>
   );
 }
