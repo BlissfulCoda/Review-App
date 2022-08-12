@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div>
       <Header title="Review App" />
-      <FeedbackList feedbackData={FeedbackData} />
+      <FeedbackList feedbackData={feedback} />
     </div>
   );
 }
