@@ -11,7 +11,7 @@ export default function Button({ type, version, children, isDisabled }) {
 Button.defaultProps = {
   type: "button",
   version: "primary",
-  isDisabled: true,
+  isDisabled: false,
   children: "Click Me",
 };
 
