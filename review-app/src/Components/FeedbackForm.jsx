@@ -3,7 +3,7 @@ import Card from "./Shared/Card";
 import Button from "./Shared/Button";
 import RatingStats from "./RatingStats";
 
-export default function FeeddbackForm() {
+export default function FeeddbackForm({ handleSubmitForm }) {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(10);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -24,9 +24,22 @@ export default function FeeddbackForm() {
     setText(e.currentTarget.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (text.length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+      handleSubmitForm(newFeedback);
+      setText("");
+    }
+  };
+
   return (
     <Card className="input">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>What would you rate this service ?</h2>
         <RatingStats select={(rating) => setRating(rating)} />
         <section className="input-group">

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+import {Browser as Router, Route, Routes, Link} from 'react-router-dom';
 import { useState } from "react";
 import Header from "./Components/Header";
 import FeedbackData from "./Data/FeedbackData";
@@ -13,14 +15,19 @@ export default function App() {
       setFeedback(feedback.filter((item) => item.id !== id));
   };
 
+  const handleAddFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4();
+    setFeedback([newFeedback, ...feedback]);
+  };
+
   return (
-    <div>
+    <Router>
       <Header title="Review App" />
       <div className="container">
-        <FeeddbackForm />
+        <FeeddbackForm handleSubmitForm={handleAddFeedback} />
         <FeedbackStats feedbackData={feedback} />
         <FeedbackList feedbackData={feedback} handleDelete={handleDelete} />
       </div>
-    </div>
+    </Router>
   );
 }
