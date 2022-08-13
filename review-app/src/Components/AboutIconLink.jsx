@@ -4,7 +4,7 @@ export default function AboutPageLink() {
   return (
     <div className="about-link">
       <Link to="/about">
-        <FaQuestion color="white" />
+        <FaQuestion size={20} />
       </Link>
     </div>
   );

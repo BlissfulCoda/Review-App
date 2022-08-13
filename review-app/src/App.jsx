@@ -25,22 +25,24 @@ export default function App() {
   return (
     <Router>
       <Header title="Review App" />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="container">
-              <FeeddbackForm handleSubmitForm={handleAddFeedback} />
-              <FeedbackStats feedbackData={feedback} />
-              <FeedbackList
-                feedbackData={feedback}
-                handleDelete={handleDelete}
-              />
-              <AboutPageLink />
-            </div>
-          }
-        />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <FeeddbackForm handleSubmitForm={handleAddFeedback} />
+                <FeedbackStats feedbackData={feedback} />
+                <FeedbackList
+                  feedbackData={feedback}
+                  handleDelete={handleDelete}
+                />
+                <AboutPageLink />
+              </>
+            }
+          />
+        </Routes>
+      </div>
       <Routes>
         <Route path="/about" element={<AboutPage />} />
       </Routes>
