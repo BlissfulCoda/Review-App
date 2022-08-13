@@ -36,6 +36,7 @@ export default function App() {
                 feedbackData={feedback}
                 handleDelete={handleDelete}
               />
+              <AboutPageLink />
             </div>
           }
         />
@@ -43,7 +44,6 @@ export default function App() {
       <Routes>
         <Route path="/about" element={<AboutPage />} />
       </Routes>
-      <AboutPageLink />
     </Router>
   );
 }
