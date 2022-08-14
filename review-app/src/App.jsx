@@ -1,10 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { FeedbackProvider } from "./Context/FeedbackContext";
 import AboutPageLink from "./Components/AboutIconLink";
 import { useState } from "react";
@@ -14,7 +9,6 @@ import FeedbackList from "./Components/FeedbackList";
 import FeedbackStats from "./Components/FeedbackStats";
 import FeeddbackForm from "./Components/FeedbackForm";
 import AboutPage from "./Components/AboutPage";
-import Card from "./Components/Shared/Card";
 
 export default function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
@@ -40,18 +34,9 @@ export default function App() {
               element={
                 <>
                   <FeeddbackForm handleSubmitForm={handleAddFeedback} />
-                  <FeedbackStats feedback={feedback} />
-                  <FeedbackList
-                    feedbackData={feedback}
-                    handleDelete={handleDelete}
-                  />
+                  <FeedbackStats />
+                  <FeedbackList handleDelete={handleDelete} />
                   <AboutPageLink />
-                  <Card>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/about">
-                      About
-                    </NavLink>
-                  </Card>
                 </>
               }
             />
