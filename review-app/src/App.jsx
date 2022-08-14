@@ -5,6 +5,7 @@ import {
   Routes,
   NavLink,
 } from "react-router-dom";
+import { FeedbackProvider } from "./Context/FeedbackContext";
 import AboutPageLink from "./Components/AboutIconLink";
 import { useState } from "react";
 import Header from "./Components/Header";
@@ -29,35 +30,37 @@ export default function App() {
   };
 
   return (
-    <Router>
-      <Header title="Review App" />
-      <div className="container">
+    <FeedbackProvider>
+      <Router>
+        <Header title="Review App" />
+        <div className="container">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <FeeddbackForm handleSubmitForm={handleAddFeedback} />
+                  <FeedbackStats feedback={feedback} />
+                  <FeedbackList
+                    feedbackData={feedback}
+                    handleDelete={handleDelete}
+                  />
+                  <AboutPageLink />
+                  <Card>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/about">
+                      About
+                    </NavLink>
+                  </Card>
+                </>
+              }
+            />
+          </Routes>
+        </div>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <FeeddbackForm handleSubmitForm={handleAddFeedback} />
-                <FeedbackStats feedbackData={feedback} />
-                <FeedbackList
-                  feedbackData={feedback}
-                  handleDelete={handleDelete}
-                />
-                <AboutPageLink />
-                <Card>
-                  <NavLink to="/">Home</NavLink>
-                  <NavLink to="/about" activeClassName="active">
-                    About
-                  </NavLink>
-                </Card>
-              </>
-            }
-          />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
-      </div>
-      <Routes>
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
-    </Router>
+      </Router>
+    </FeedbackProvider>
   );
 }
