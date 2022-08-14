@@ -1,8 +1,11 @@
 import { FaSith } from "react-icons/fa";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import Card from "./Shared/Card";
+import FeedbackContext from "../Context/FeedbackContext";
 
-export default function FeedbackItem({ data, handleDelete }) {
+export default function FeedbackItem({ data}) {
+  const { handleDelete } = useContext(FeedbackContext);
   const { id, rating, text } = data;
   return (
     <Card>
