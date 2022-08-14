@@ -1,5 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 import AboutPageLink from "./Components/AboutIconLink";
 import { useState } from "react";
 import Header from "./Components/Header";
@@ -8,6 +13,7 @@ import FeedbackList from "./Components/FeedbackList";
 import FeedbackStats from "./Components/FeedbackStats";
 import FeeddbackForm from "./Components/FeedbackForm";
 import AboutPage from "./Components/AboutPage";
+import Card from "./Components/Shared/Card";
 
 export default function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
@@ -38,6 +44,12 @@ export default function App() {
                   handleDelete={handleDelete}
                 />
                 <AboutPageLink />
+                <Card>
+                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/about" activeClassName="active">
+                    About
+                  </NavLink>
+                </Card>
               </>
             }
           />
