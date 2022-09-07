@@ -1,16 +1,15 @@
 import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import FeedbackData from "../Data/FeedbackData";
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState([
-    {
-      id: 1,
-      text: "This is just an example of a feedback Item",
-      rating: 10,
-    },
-  ]);
+  const [feedback, setFeedback] = useState(FeedbackData);
+  const [feedbackEdit, setFeedbackEdit] = useState({
+    item: {},
+    edit: false,
+  });
 
   const handleDelete = (id) => {
     window.confirm("Are you sure you want to delete this review?") &&
@@ -22,12 +21,20 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([newFeedback, ...feedback]);
   };
 
+  const editFeedback = item => {
+    setFeedbackEdit({
+      item,
+      edit: true
+    })
+  }
+
   return (
     <FeedbackContext.Provider
       value={{
         feedback,
         handleDelete,
         handleAddFeedback,
+        editFeedback,
       }}
     >
       {" "}
