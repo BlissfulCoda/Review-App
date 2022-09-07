@@ -11,22 +11,31 @@ export const FeedbackProvider = ({ children }) => {
     edit: false,
   });
 
+  // Delete an item
   const handleDelete = (id) => {
     window.confirm("Are you sure you want to delete this review?") &&
       setFeedback(feedback.filter((item) => item.id !== id));
   };
 
+  // Add an item
   const handleAddFeedback = (newFeedback) => {
     newFeedback.id = uuidv4();
     setFeedback([newFeedback, ...feedback]);
   };
 
-  const editFeedback = item => {
+  // Edit an item
+  const editFeedback = (item) => {
     setFeedbackEdit({
       item,
-      edit: true
-    })
+      edit: true,
+    });
+  };
+
+  // Update an item
+  const updateFeedback = (id, updateItem) => {
+    setFeedback(feedback.map(item => item.id === id ? {...item, ...updateItem} : item))
   }
+
 
   return (
     <FeedbackContext.Provider
@@ -35,6 +44,8 @@ export const FeedbackProvider = ({ children }) => {
         handleDelete,
         handleAddFeedback,
         editFeedback,
+        feedbackEdit,
+        updateFeedback,
       }}
     >
       {" "}
