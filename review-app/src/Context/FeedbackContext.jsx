@@ -28,9 +28,6 @@ export const FeedbackProvider = ({ children }) => {
       await fetch(`/feedback/${id}`, { method: "DELETE" });
       setFeedback(feedback.filter((item) => item.id !== id));
     }
-
-    // window.confirm("Are you sure you want to delete this review?") &&
-    //   setFeedback(feedback.filter((item) => item.id !== id));
   };
 
   // Add an item
@@ -55,10 +52,18 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Update an item
-  const updateFeedback = (id, updateItem) => {
+  const updateFeedback = async (id, updateItem) => {
+    const response = await fetch(`/feedback/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateItem),
+    });
+
+    const data = await response.json();
+
     setFeedback(
       feedback.map((item) =>
-        item.id === id ? { ...item, ...updateItem } : item
+        item.id === id ? { ...data, ...updateItem } : item
       )
     );
   };
