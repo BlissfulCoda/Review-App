@@ -23,9 +23,14 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Delete an item
-  const handleDelete = (id) => {
-    window.confirm("Are you sure you want to delete this review?") &&
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      await fetch(`/feedback/${id}`, { method: "DELETE" });
       setFeedback(feedback.filter((item) => item.id !== id));
+    }
+
+    // window.confirm("Are you sure you want to delete this review?") &&
+    //   setFeedback(feedback.filter((item) => item.id !== id));
   };
 
   // Add an item
