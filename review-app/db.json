@@ -6,14 +6,9 @@
       "text": "This is feedback item 3 from the backend"
     },
     {
-      "rating": "7",
-      "text": "Welcome, Ronnie to Node API",
+      "text": "Updating, Ronnie to Node API",
+      "rating": 10,
       "id": 4
-    },
-    {
-      "text": "New Feedback Added!",
-      "rating": 1,
-      "id": 5
     },
     {
       "text": "Welcome, Ronnie Kiyegga to React & Node API",
