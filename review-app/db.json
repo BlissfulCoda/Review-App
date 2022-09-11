@@ -19,6 +19,16 @@
       "rating": "7",
       "text": "Welcome, Ronnie to Node API",
       "id": 4
+    },
+    {
+      "text": "New Feedback Added!",
+      "rating": 1,
+      "id": 5
+    },
+    {
+      "rating": "7",
+      "text": "Welcome, Ronnie to Node API",
+      "id": 6
     }
   ]
 }
